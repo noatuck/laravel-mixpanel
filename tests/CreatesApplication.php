@@ -18,12 +18,19 @@ trait CreatesApplication
             __DIR__ . '/Fixtures/resources/views/auth/passwords/email.blade.php' => __DIR__ . '/../vendor/laravel/laravel/resources/views/auth/passwords/email.blade.php',
             __DIR__ . '/Fixtures/resources/views/auth/passwords/reset.blade.php' => __DIR__ . '/../vendor/laravel/laravel/resources/views/auth/passwords/email.blade.php',
             __DIR__ . '/Fixtures/resources/views/layouts/app.blade.php' => __DIR__ . '/../vendor/laravel/laravel/resources/views/layouts/app.blade.php',
-            __DIR__ . '/Fixtures/routes/web.php' => __DIR__ . '/../vendor/laravel/laravel/routes/web.php',
+            __DIR__ . '/Fixtures/routes/web.php' => __DIR__ . '/../vendor/laravel/laravel/routes/web.php'
         ]);
         $app = require __DIR__ . '/../vendor/laravel/laravel/bootstrap/app.php';
         $app->make(Kernel::class)->bootstrap();
         $app->register(Service::class);
         $app->register(UiServiceProvider::class);
+
+        // Use different directory for factories
+        // https://gist.github.com/james2doyle/0983364225874658e5f8144d67870798
+        $app->singleton(\Illuminate\Database\Eloquent\Factory::class, function ($app) {
+            $faker = $app->make(\Faker\Generator::class);
+            return \Illuminate\Database\Eloquent\Factory::construct($faker, __DIR__ . '/database/factories');
+        });
 
         return $app;
     }

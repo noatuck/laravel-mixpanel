@@ -1,6 +1,7 @@
 <?php namespace GeneaLabs\LaravelMixpanel\Tests\Feature;
 
-use App\User;
+//use App\User;
+use GeneaLabs\LaravelMixpanel\Tests\Fixtures\App\User;
 use GeneaLabs\LaravelMixpanel\Tests\FeatureTestCase;
 use GeneaLabs\LaravelMixpanel\Listeners\LoginAttempt;
 use GeneaLabs\LaravelMixpanel\Events\MixpanelEvent;

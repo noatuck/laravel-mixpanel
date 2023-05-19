@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use Laravel\Ui\AuthRouteMethods;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::mixin(new AuthRouteMethods);
+Route::auth();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', '\App\Http\Controllers\HomeController@index')->name('home');

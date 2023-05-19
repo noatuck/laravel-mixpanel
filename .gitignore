@@ -4,3 +4,5 @@ composer.lock
 yarn.lock
 .phpunit.result.cache
 package-lock.json
+.idea/
+.phpunit.cache/
