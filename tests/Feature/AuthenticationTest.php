@@ -1,16 +1,10 @@
 <?php namespace GeneaLabs\LaravelMixpanel\Tests\Feature;
 
-use App\User;
+use GeneaLabs\LaravelMixpanel\Tests\Fixtures\App\User;
 use GeneaLabs\LaravelMixpanel\Tests\FeatureTestCase;
-use GeneaLabs\LaravelMixpanel\Listeners\LoginAttempt;
 use GeneaLabs\LaravelMixpanel\Events\MixpanelEvent;
-use Illuminate\Auth\Events\Attempting;
-use Illuminate\Auth\Events\Login;
-use Illuminate\Auth\Events\Logout;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Event;
-use Mockery;
 
 class AuthenticationTest extends FeatureTestCase
 {
